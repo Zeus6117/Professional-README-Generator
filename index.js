@@ -3,6 +3,10 @@ const fs = require("fs");
 //imports inquirer from npm
 const inquirer = require("inquirer");
 
+const { reject } = require("lodash");
+//sends data to read-me-template page
+const generatePage = require("./utils/generateMarkdown");
+
 const promptUser = () => {
   return inquirer.prompt([
     {
@@ -133,6 +137,28 @@ const promptUser = () => {
     },
   ]);
 };
-promptUser().then((data) => {
-  console.log(data);
-});
+
+const writeFile = (filecontent) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile("README.md", filecontent, (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve({
+        ok: true,
+        message: "Read me created!",
+      });
+    });
+  });
+};
+
+promptUser()
+  .then((readMeData) => {
+    console.log(readMeData);
+    return generatePage(readMeData);
+  })
+  .then((readMeMD) => {
+    return writeFile(readMeMD);
+  })
+  .catch((err) => console.log(err));
