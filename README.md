@@ -1,6 +1,6 @@
 # Professional-README-Generator
 
-![Apache License 2.0](https://img.shields.io/badge/license-Apache_License_2.0-blue)
+![MIT License](https://img.shields.io/badge/license-MIT-yellow)
 
 ******
 ## Table of Contents
@@ -11,6 +11,8 @@
 - [Contributing](#contributing)
 - [Test](#test)
 - [Questions](#questions)
+******
+
 ## Description <a name="description"></a>
 ******
 
@@ -20,7 +22,7 @@
 ## License <a name="license"></a>
 ******
 
-  Licensed under the *[Apache License 2.0](https://opensource.org/licenses/Apache-2.0)*
+  Licensed under the *[MIT License](https://opensource.org/licenses/MIT)*
 
 ## Install <a name="install"></a>
 ******
@@ -33,5 +35,5 @@
 
 ## Questions <a name="questions"></a>
 ******
-Any questions about this project, please email sample@email.com </br>
-View my Github profile at [githubUser](https://github.com/githubUser)
+Any questions about this project, please email v </br>
+View my Github profile at [v](https://github.com/v)

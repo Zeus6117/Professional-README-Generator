@@ -2,17 +2,17 @@
 const fs = require("fs");
 //imports inquirer from npm
 const inquirer = require("inquirer");
-
-const { reject } = require("lodash");
 //sends data to read-me-template page
 const generatePage = require("./utils/generateMarkdown");
 
+//prompts user to start
 const promptUser = () => {
+  console.log("Answer the following questions to generate your README file.")
   return inquirer.prompt([
     {
       type: "input",
       name: "title",
-      message: "What is the title of your project for your README (REQUIRED",
+      message: "What is the title of your project for your README",
       validate: (titleInput) => {
         if (titleInput) {
           return true;
@@ -25,7 +25,7 @@ const promptUser = () => {
     {
       type: "input",
       name: "description",
-      message: "Add a description of your project (REQUIRED)",
+      message: "Add a description of your project",
       validate: (descriptionInput) => {
         if (descriptionInput) {
           return true;
@@ -140,7 +140,7 @@ const promptUser = () => {
 
 const writeFile = (filecontent) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile("README.md", filecontent, (err) => {
+    fs.writeFile("generated-README-.md", filecontent, (err) => {
       if (err) {
         reject(err);
         return;
@@ -155,10 +155,10 @@ const writeFile = (filecontent) => {
 
 promptUser()
   .then((readMeData) => {
-    console.log(readMeData);
     return generatePage(readMeData);
   })
   .then((readMeMD) => {
+    console.log("Your README file has been created!");
     return writeFile(readMeMD);
   })
   .catch((err) => console.log(err));
